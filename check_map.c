@@ -5,84 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 15:28:48 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/03 03:36:07 by nel-baz          ###   ########.fr       */
+/*   Created: 2023/03/05 03:46:10 by nel-baz           #+#    #+#             */
+/*   Updated: 2023/03/09 01:28:41 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	my_strlen(char *s, char c)
+void	exit_func(char *str)
+{
+	ft_printf("Error, %s\n", str);
+	exit(1);
+}
+
+void	check_map_walls(t_map *map)
 {
 	int	i;
 
 	i = 0;
-	if (s && c == '\0')
+	while (i < map->y)
 	{
-		while (s[i])
-			i++;
+		if (map->data[i][0] != '1' || map->data[i][map->x - 1] != '1')
+		{
+			exit_func("map is not closed🙂");
+		}
+		i++;
 	}
-	else if (s && c == '\n')
+	i = 0;
+	while (i < map->x)
 	{
-		while (s[i] && s[i] != '\n')
-			i++;
+		if (map->data[0][i] != '1' || map->data[map->y - 1][i] != '1')
+			exit_func("map is not closed🙂");
+		i++;
 	}
-	return (i);
 }
 
-void	chack_map_name(char **argv)
+void	check_map_components(t_map *map)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	while (j < map->y)
+	{
+		i = 0;
+		while (i < map->x)
+		{
+			if (map->data[j][i] != 'E' && map->data[j][i] != '0'
+			&& map->data[j][i] != '1' && map->data[j][i] != 'P'
+			&& map->data[j][i] != 'C')
+				exit_func("invalid character");
+			i++;
+		}
+		j++;
+	}
+}
+
+void	free_map(char **str, int size)
 {
 	int	i;
 
-	i = my_strlen(argv[1], '\0') - 1;
-	if (argv[1][i] != 'r' || argv[1][--i] != 'e'
-		|| argv[1][--i] != 'b' || argv[1][--i] != '.' || !argv[1][--i])
-		ft_printf("Error\n");
-}
-
-void	insert_var(t_map *map)
-{
-	map->x = 0;
-	map->y = 0;
-}
-
-void	ft_map_rectang(char *file, t_map *map)
-{
-	char	*str;
-	int		i;
-	int		fd;
-
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	if (!str)
-		exit(1);
-	i = my_strlen(str, '\n');
+	i = 0;
+	while (i <= size)
+		free(str[i++]);
 	free(str);
-	while (1)
-	{
-		str = get_next_line(fd);
-		if (!str)
-			break ;
-		map->x = my_strlen(str, '\n');
-		if (i != map->x)
-		{
-			ft_printf("map is not rectangular!!");
-			exit(1);
-		}
-		map->y++;
-		free(str);
-	}
-}
-
-void	ft_alloc_map(char *file, t_map *map)
-{
-	int		fd;
-	char	*str;
-
-	map->data = malloc(sizeof(char))
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	if (!str)
-		exit(1);
-	
 }

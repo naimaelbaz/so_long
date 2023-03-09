@@ -6,21 +6,23 @@
 #    By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 12:38:33 by nel-baz           #+#    #+#              #
-#    Updated: 2023/03/03 02:26:47 by nel-baz          ###   ########.fr        #
+#    Updated: 2023/03/09 01:36:57 by nel-baz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-# NAME_B = checker
+
 
 CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = 	check_map.c\
-		gnl/get_next_line_utils.c \
+SRCS = 	gnl/get_next_line_utils.c \
 		gnl/get_next_line.c \
+		check_charactrs.c\
+		check_map.c\
+		alloc_map.c\
 		main.c
 
 # SRCS_BONUS =
@@ -53,11 +55,11 @@ $(NAME):  $(OBJS)
 
 clean:	
 	rm -rf $(OBJS)
-	make -C libft/ clean
+	make -C ft_printf/ clean
 
 fclean:	clean
 	rm -rf $(NAME)
-	make -C libft/ fclean
+	make -C ft_printf/ fclean
 		
 re : fclean all
 
