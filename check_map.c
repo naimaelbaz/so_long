@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 03:46:10 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/09 01:28:41 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/12 00:28:32 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_map_components(t_map *map)
 			if (map->data[j][i] != 'E' && map->data[j][i] != '0'
 			&& map->data[j][i] != '1' && map->data[j][i] != 'P'
 			&& map->data[j][i] != 'C')
-				exit_func("invalid character");
+				exit_func("invalid character🙂");
 			i++;
 		}
 		j++;

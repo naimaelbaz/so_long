@@ -6,13 +6,11 @@
 #    By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 12:38:33 by nel-baz           #+#    #+#              #
-#    Updated: 2023/03/09 01:36:57 by nel-baz          ###   ########.fr        #
+#    Updated: 2023/03/12 00:31:34 by nel-baz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-
-
 
 CC = cc
 
@@ -23,7 +21,8 @@ SRCS = 	gnl/get_next_line_utils.c \
 		check_charactrs.c\
 		check_map.c\
 		alloc_map.c\
-		main.c
+		main.c\
+		flood_fill.c
 
 # SRCS_BONUS =
 

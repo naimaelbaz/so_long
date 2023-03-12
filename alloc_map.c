@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 03:45:41 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/09 01:27:57 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/12 02:24:23 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,20 @@ void	chack_map_name(char **argv)
 	i = my_strlen(argv[1], '\0') - 1;
 	if (argv[1][i] != 'r' || argv[1][--i] != 'e'
 		|| argv[1][--i] != 'b' || argv[1][--i] != '.' || !argv[1][--i])
-		exit_func("problem withe the name of file");
+		exit_func("problem withe the name of file🙂");
 }
 
 void	insert_var(t_map *map)
 {
 	map->x = 0;
 	map->y = 0;
+	map->exit = 0;
+	map->coins = 0;
 	map->num_c = 0;
 	map->num_e = 0;
 	map->num_p = 0;
+	map->plyer_x = 0;
+	map->plyer_y = 0;
 }
 
 void	ft_map_rectang(char *file, t_map *map)
@@ -58,7 +62,7 @@ void	ft_map_rectang(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
 	if (!str)
-		exit_func("problem in file");
+		exit_func("problem in file🙂");
 	map->y++;
 
 	i = my_strlen(str, '\n');
@@ -70,7 +74,7 @@ void	ft_map_rectang(char *file, t_map *map)
 			break ;
 		map->x = my_strlen(str, '\n');
 		if (i != map->x)
-			exit_func("map is not rectangular!!");
+			exit_func("map is not rectangular🙂");
 		map->y++;
 		free(str);
 	}
