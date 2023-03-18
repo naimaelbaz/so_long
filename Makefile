@@ -6,7 +6,7 @@
 #    By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 12:38:33 by nel-baz           #+#    #+#              #
-#    Updated: 2023/03/12 00:31:34 by nel-baz          ###   ########.fr        #
+#    Updated: 2023/03/15 16:03:32 by nel-baz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,15 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
 SRCS = 	gnl/get_next_line_utils.c \
-		gnl/get_next_line.c \
-		check_charactrs.c\
-		check_map.c\
-		alloc_map.c\
-		main.c\
-		flood_fill.c
+		gnl/get_next_line.c\
+		./check_charactrs.c\
+		./so_long_utils.c\
+		./flood_fill.c\
+		./check_map.c\
+		./alloc_map.c\
+		./draw_map.c\
+		./main.c\
+		
 
 # SRCS_BONUS =
 
@@ -30,7 +33,7 @@ OBJS = $(SRCS:.c=.o)
 
 # OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-%.o: %.c so_long.h
+./%.o: ./%.c so_long.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 gnl/%.o: gnl/%.c gnl/get_next_line.h
@@ -45,7 +48,7 @@ ft_printf :
 	make -C ft_printf  all	
 
 $(NAME):  $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) ./ft_printf/libftprintf.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) ./ft_printf/libftprintf.a -o $(NAME) -lmlx -framework OpenGL -framework AppKit
 
 # $(NAME_B):  $(OBJS_BONUS)
 # 	$(CC) $(CFLAGS) $(OBJS_BONUS) ./libft/libft.a -o $(NAME_B)

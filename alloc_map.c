@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 03:45:41 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/12 02:24:23 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/15 16:20:18 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,9 @@ void	chack_map_name(char **argv)
 	int	i;
 
 	i = my_strlen(argv[1], '\0') - 1;
-	if (argv[1][i] != 'r' || argv[1][--i] != 'e'
-		|| argv[1][--i] != 'b' || argv[1][--i] != '.' || !argv[1][--i])
-		exit_func("problem withe the name of file🙂");
-}
-
-void	insert_var(t_map *map)
-{
-	map->x = 0;
-	map->y = 0;
-	map->exit = 0;
-	map->coins = 0;
-	map->num_c = 0;
-	map->num_e = 0;
-	map->num_p = 0;
-	map->plyer_x = 0;
-	map->plyer_y = 0;
+	if (argv[1][i] != 'r' || argv[1][--i] != 'e' || argv[1][--i] != 'b'
+		|| argv[1][--i] != '.' || !argv[1][--i])
+		exit_func("\033[0;31mproblem with the name of file 🙂");
 }
 
 void	ft_map_rectang(char *file, t_map *map)
@@ -62,9 +49,8 @@ void	ft_map_rectang(char *file, t_map *map)
 	fd = open(file, O_RDONLY);
 	str = get_next_line(fd);
 	if (!str)
-		exit_func("problem in file🙂");
+		exit_func("\033[0;31mproblem in file 🙂");
 	map->y++;
-
 	i = my_strlen(str, '\n');
 	free(str);
 	while (1)
@@ -74,7 +60,7 @@ void	ft_map_rectang(char *file, t_map *map)
 			break ;
 		map->x = my_strlen(str, '\n');
 		if (i != map->x)
-			exit_func("map is not rectangular🙂");
+			exit_func("\033[0;31mmap is not rectangular 🙂");
 		map->y++;
 		free(str);
 	}
@@ -83,8 +69,8 @@ void	ft_map_rectang(char *file, t_map *map)
 
 void	ft_alloc_map(char *file, t_map *map)
 {
-	int		fd;
-	int		i;
+	int	fd;
+	int	i;
 
 	map->data = malloc(sizeof(char *) * (map->y + 1));
 	if (!map->data)
