@@ -6,7 +6,7 @@
 #    By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 12:38:33 by nel-baz           #+#    #+#              #
-#    Updated: 2023/03/15 16:03:32 by nel-baz          ###   ########.fr        #
+#    Updated: 2023/03/18 19:18:42 by nel-baz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,16 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRCS = 	gnl/get_next_line_utils.c \
 		gnl/get_next_line.c\
-		./check_charactrs.c\
-		./so_long_utils.c\
-		./flood_fill.c\
-		./check_map.c\
 		./alloc_map.c\
+		./check_charactrs.c\
+		./check_map.c\
 		./draw_map.c\
+		./draw_map_utils.c\
+		./flood_fill.c\
 		./main.c\
+		./moves.c\
+		./moves_utils.c\
+		./so_long_utils.c\
 		
 
 # SRCS_BONUS =

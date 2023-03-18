@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 00:22:36 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/15 15:27:18 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/18 19:24:08 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ void	ft_alloc_map_tmp(t_map *map)
 	if (!map->data_tmp)
 		return ;
 	i = 0;
-	// printf("%s | %p\n", map->data[i] , map->data_tmp[i]);
 	while (i < map->y)
 	{
 		map->data_tmp[i] = my_strdup(map->data[i]);
 		i++;
 	}
-	// printf("%s | %p\n", map->data[0] , map->data_tmp[0]);
 	map->data_tmp[i] = NULL;
 }
 
@@ -72,18 +70,19 @@ void	position_player(t_map *map)
 	}
 }
 
-void	number_of_coins(t_map *map)
+void	number_of_coins(t_map *map, char **tmp)
 {
 	int	i;
 	int	j;
 
 	j = 1;
+	map->coins = 0;
 	while (j < map->y)
 	{
 		i = 0;
 		while (i < map->x)
 		{
-			if (map->data_tmp[j][i] == 'C')
+			if (tmp[j][i] == 'C')
 				map->coins++;
 			i++;
 		}
@@ -93,7 +92,7 @@ void	number_of_coins(t_map *map)
 
 void	valid_path(t_map *map)
 {
-	number_of_coins(map);
+	number_of_coins(map, map->data_tmp);
 	if (map->coins || map->exit != 1)
 		exit_func("\033[0;31minvalid path in the map🙂");
 }

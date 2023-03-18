@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:57:08 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/15 16:04:01 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/18 19:24:26 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	insert_var(t_map *map)
 	map->x = 0;
 	map->y = 0;
 	map->exit = 0;
-	map->coins = 0;
 	map->num_c = 0;
 	map->num_e = 0;
 	map->num_p = 0;
 	map->plyer_x = 0;
 	map->plyer_y = 0;
+	map->ex = 0;
+	map->pl = 0;
+	map->moves = 0;
 }
 
 void	exit_func(char *str)

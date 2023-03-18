@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:50:07 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/18 08:15:44 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/18 19:21:25 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@
 # include <string.h>
 # include <unistd.h>
 
-typedef struct so_long_mlx
-{
-	void	*win;
-	void	*mlx;
-	void	*floor;
-	void	*coin_a;
-	void	*coin_b;
-	void	*exit_a;
-	void	*exit_b;
-	void	*player;
-	void	*wall;
-}			t_mlx;
+// typedef struct so_long_mlx
+// {
+// 	void	*win;
+// 	void	*mlx;
+// 	void	*floor;
+// 	void	*coin_a;
+// 	void	*coin_b;
+// 	void	*exit_a;
+// 	void	*exit_b;
+// 	void	*player;
+// 	void	*wall;
+// }			t_mlx;
 
 typedef struct so_long
 {
@@ -47,7 +47,20 @@ typedef struct so_long
 	int		num_p;
 	int		exit;
 	int		coins;
-	t_mlx	d;
+	void	*win;
+	void	*mlx;
+	void	*coin_a;
+	void	*floor;
+	void	*exit_a;
+	void	*exit_b;
+	void	*player_l;
+	void	*player_d;
+	void	*player_r;
+	void	*player_u;
+	void	*wall;
+	int		ex;
+	int		pl;
+	int		moves;
 }			t_map;
 
 typedef struct so_long_var
@@ -71,10 +84,24 @@ void		number_of_components(t_map *map);
 void		position_player(t_map *map);
 void		ft_alloc_map_tmp(t_map *map);
 void		flood_fill(t_map *map, int pos_x, int pos_y);
-void		number_of_coins(t_map *map);
+void		number_of_coins(t_map *map, char **tmp);
 void		valid_path(t_map *map);
 int			my_strlen(char *s, char c);
 char		*my_strdup(char *s1);
-void		ft_new_wind(t_map *map, t_var *v);
+void		ft_new_wind(t_map *map);
+void		ft_draw_loop(t_map *m, t_var *v);
+void		move_3(t_map *map);
+void		move_2(t_map *map);
+void		move_1(t_map *map);
+void		move_0(t_map *map);
+void		move_player_left(t_map *map);
+void		move_player_right(t_map *map);
+void		move_player_up(t_map *map);
+void		move_player_down(t_map *map);
+void		move_left(t_map	*map, int c);
+void		move_right(t_map	*map, int c);
+void		move_up(t_map	*map, int c);
+void		move_down(t_map	*map, int c);
+void		ft_draw(t_map *m);
 
 #endif
