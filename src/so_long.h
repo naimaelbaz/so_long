@@ -6,33 +6,20 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:50:07 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/18 19:21:25 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/21 13:25:28 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "ft_printf/ft_printf.h"
-# include "gnl/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
+# include "../gnl/get_next_line.h"
 # include <fcntl.h>
 # include <mlx.h>
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
-
-// typedef struct so_long_mlx
-// {
-// 	void	*win;
-// 	void	*mlx;
-// 	void	*floor;
-// 	void	*coin_a;
-// 	void	*coin_b;
-// 	void	*exit_a;
-// 	void	*exit_b;
-// 	void	*player;
-// 	void	*wall;
-// }			t_mlx;
 
 typedef struct so_long
 {
@@ -58,8 +45,8 @@ typedef struct so_long
 	void	*player_r;
 	void	*player_u;
 	void	*wall;
-	int		ex;
-	int		pl;
+	void	*ex;
+	void	*pl;
 	int		moves;
 }			t_map;
 
@@ -98,10 +85,10 @@ void		move_player_left(t_map *map);
 void		move_player_right(t_map *map);
 void		move_player_up(t_map *map);
 void		move_player_down(t_map *map);
-void		move_left(t_map	*map, int c);
-void		move_right(t_map	*map, int c);
-void		move_up(t_map	*map, int c);
-void		move_down(t_map	*map, int c);
+void		move_left(t_map	*map);
+void		move_right(t_map	*map);
+void		move_up(t_map	*map);
+void		move_down(t_map	*map);
 void		ft_draw(t_map *m);
 
 #endif

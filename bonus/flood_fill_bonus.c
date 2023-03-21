@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   flood_fill_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 00:22:36 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/18 19:24:08 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/19 09:46:47 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	flood_fill(t_map *map, int pos_x, int pos_y)
 {
@@ -93,6 +93,7 @@ void	number_of_coins(t_map *map, char **tmp)
 void	valid_path(t_map *map)
 {
 	number_of_coins(map, map->data_tmp);
-	if (map->coins || map->exit != 1)
+	number_of_enemy(map, map->data_tmp);
+	if (map->coins || map->exit != 1 || map->enemy)
 		exit_func("\033[0;31minvalid path in the map🙂");
 }

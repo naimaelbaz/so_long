@@ -1,65 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves_utils.c                                      :+:      :+:    :+:   */
+/*   moves_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 19:07:28 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/18 19:17:06 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/21 12:46:53 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	move_0(t_map *map)
 {
 	if (map->coins)
 	{
-		move_left(map, 0);
+		move_left(map);
 		map->coins--;
 		if (!map->coins)
-			move_left(map, 1);
+		{
+			map->ex = map->exit_b;
+			move_left(map);
+		}
 	}
-	map->moves++;
-	ft_printf("%d\n", map->moves);
 }
 
 void	move_1(t_map *map)
 {
 	if (map->coins)
 	{
-		move_right(map, 0);
+		move_right(map);
 		map->coins--;
 		if (!map->coins)
-			move_right(map, 1);
+		{
+			map->ex = map->exit_b;
+			move_right(map);
+		}
 	}
-	map->moves++;
-	ft_printf("%d\n", map->moves);
 }
 
 void	move_2(t_map *map)
 {
 	if (map->coins)
 	{
-		move_up(map, 0);
+		move_up(map);
 		map->coins--;
 		if (!map->coins)
-			move_up(map, 1);
+		{
+			map->ex = map->exit_b;
+			move_up(map);
+		}
 	}
-	map->moves++;
-	ft_printf("%d\n", map->moves);
 }
 
 void	move_3(t_map *map)
 {
 	if (map->coins)
 	{
-		move_down(map, 0);
+		move_down(map);
 		map->coins--;
 		if (!map->coins)
-			move_down(map, 1);
+		{
+			map->ex = map->exit_b;
+			move_down(map);
+		}
 	}
-	map->moves++;
-	ft_printf("%d\n", map->moves);
 }

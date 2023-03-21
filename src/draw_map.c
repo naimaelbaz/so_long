@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:50:40 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/18 19:22:56 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/21 12:35:31 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	ft_draw(t_map *m)
 		v.y += 64;
 		v.i++;
 	}
+	ft_printf("%d\n", m->moves);
 }
 
 int	on_click(int keycode, t_map *map)
@@ -48,29 +49,31 @@ int	on_click(int keycode, t_map *map)
 	return (0);
 }
 
+void	*xpm_to_img(t_map *map, char *tmp)
+{
+	void	*mlx;
+	int		a;
+	int		b;
+
+	mlx = mlx_xpm_file_to_image(map->mlx, tmp, &a, &b);
+	if (!mlx)
+		exit_func("\033[0;31mmlx problem");
+	return (mlx);
+}
+
 void	insert_image(t_map *map)
 {
-	int	a;
-	int	b;
-
-	map->floor = mlx_xpm_file_to_image(map->mlx,
-			"./files/floor.xpm", &a, &b);
-	map->coin_a = mlx_xpm_file_to_image(map->mlx,
-			"./files/collect.xpm", &a, &b);
-	map->exit_a = mlx_xpm_file_to_image(map->mlx,
-			"./files/exit_a.xpm", &a, &b);
-	map->exit_b = mlx_xpm_file_to_image(map->mlx,
-			"./files/exit_b.xpm", &a, &b);
-	map->wall = mlx_xpm_file_to_image(map->mlx,
-			"./files/wall.xpm", &a, &b);
-	map->player_l = mlx_xpm_file_to_image(map->mlx,
-			"./files/player_L.xpm", &a, &b);
-	map->player_d = mlx_xpm_file_to_image(map->mlx,
-			"./files/player_D.xpm", &a, &b);
-	map->player_r = mlx_xpm_file_to_image(map->mlx,
-			"./files/player_R.xpm", &a, &b);
-	map->player_u = mlx_xpm_file_to_image(map->mlx,
-			"./files/player_U.xpm", &a, &b);
+	map->floor = xpm_to_img(map, "./files/floor.xpm");
+	map->coin_a = xpm_to_img(map, "./files/collect.xpm");
+	map->exit_a = xpm_to_img(map, "./files/exit_a.xpm");
+	map->exit_b = xpm_to_img(map, "./files/exit_b.xpm");
+	map->wall = xpm_to_img(map, "./files/wall.xpm");
+	map->player_l = xpm_to_img(map, "./files/player_L.xpm");
+	map->player_d = xpm_to_img(map, "./files/player_D.xpm");
+	map->player_r = xpm_to_img(map, "./files/player_R.xpm");
+	map->player_u = xpm_to_img(map, "./files/player_U.xpm");
+	map->pl = map->player_d;
+	map->ex = map->exit_a;
 }
 
 void	ft_new_wind(t_map *map)
@@ -82,6 +85,6 @@ void	ft_new_wind(t_map *map)
 			map->y * 64, "so_long");
 	insert_image(map);
 	ft_draw(map);
-	mlx_key_hook(map->win, on_click, map);
+	mlx_hook(map->win, 2, 0, on_click, map);
 	mlx_loop(map->mlx);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alloc_map.c                                        :+:      :+:    :+:   */
+/*   alloc_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 03:45:41 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/15 16:20:18 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/19 09:45:53 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	my_strlen(char *s, char c)
 {
@@ -84,4 +84,24 @@ void	ft_alloc_map(char *file, t_map *map)
 	}
 	map->data[i] = NULL;
 	close(fd);
+}
+
+void	number_of_enemy(t_map *map, char **tmp)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	map->coins = 0;
+	while (j < map->y)
+	{
+		i = 0;
+		while (i < map->x)
+		{
+			if (tmp[j][i] == 'N')
+				map->enemy++;
+			i++;
+		}
+		j++;
+	}
 }
