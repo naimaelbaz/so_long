@@ -6,7 +6,7 @@
 #    By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/07 12:38:33 by nel-baz           #+#    #+#              #
-#    Updated: 2023/03/21 14:14:05 by nel-baz          ###   ########.fr        #
+#    Updated: 2023/03/25 19:52:53 by nel-baz          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCS_BONUS = 	gnl/get_next_line_utils.c\
 				bonus/moves_utils_bonus.c\
 				bonus/so_long_utils_bonus.c\
 				bonus/animtion_enemy.c\
+				bonus/test.c\
 				bonus/ft_itoa.c
 
 OBJS = $(SRCS:.c=.o)
@@ -62,7 +63,7 @@ gnl/%.o: gnl/%.c gnl/get_next_line.h
 all : ft_printf $(NAME)
 
 ft_printf :
-	make -C ft_printf  all	
+	make -C ft_printf  all
 
 $(NAME):  $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) ./ft_printf/libftprintf.a -o $(NAME) -lmlx -framework OpenGL -framework AppKit

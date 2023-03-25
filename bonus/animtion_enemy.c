@@ -6,13 +6,13 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:10:26 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 14:16:44 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/25 21:54:00 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	position_enemy(t_map *m)
+void	get_position_enemy(t_map *m)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ void	position_enemy(t_map *m)
 void	draw_enemy(t_map *map, void *str)
 {
 	map->enemy_p = str;
-	position_enemy(map);
+	get_position_enemy(map);
 }
 
 int	ft_animation(t_map *map)
@@ -43,24 +43,64 @@ int	ft_animation(t_map *map)
 	static long	h;
 
 	if (h == 1000)
-		draw_enemy(map, map->enemy_a);
-	if (h == 2000)
-		draw_enemy(map, map->enemy_b);
-	if (h == 3000)
-		draw_enemy(map, map->enemy_c);
-	if (h == 4000)
-		draw_enemy(map, map->enemy_d);
-	if (h == 5000)
-		draw_enemy(map, map->enemy_e);
-	if (h == 6000)
-		draw_enemy(map, map->enemy_f);
-	if (h == 7000)
-		draw_enemy(map, map->enemy_j);
-	if (h == 8000)
-		draw_enemy(map, map->enemy_h);
-	if (h == 9000)
 	{
-		draw_enemy(map, map->enemy_i);
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_a);
+		else
+			draw_enemy(map, map->enemy_ar);
+	}
+	if (h == 2000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_b);
+		else
+			draw_enemy(map, map->enemy_br);
+	}
+	if (h == 3000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_c);
+		else
+			draw_enemy(map, map->enemy_cr);
+	}
+	if (h == 4000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_d);
+		else
+			draw_enemy(map, map->enemy_dr);
+	}
+	if (h == 5000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_e);
+		else
+			draw_enemy(map, map->enemy_er);
+	}
+	if (h == 6000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_f);
+		else
+			draw_enemy(map, map->enemy_fr);
+	}
+	if (h == 7000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_j);
+		else
+			draw_enemy(map, map->enemy_jr);
+	}
+	if (h == 8000)
+	{
+		if (map->eny == 0)
+			draw_enemy(map, map->enemy_h);
+		else
+			draw_enemy(map, map->enemy_hr);	
+	}
+	if (h == 8010)
+	{
+		position_enemy(map);
 		h = 0;
 	}
 	h++;

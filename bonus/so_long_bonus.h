@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:50:07 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 14:16:04 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/25 20:01:47 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct so_long
 	void	*enemy_j;
 	void	*enemy_h;
 	void	*enemy_i;
-	void	*enemy_k;
 	void	*fil;
 	void	*ex;
 	void	*pl;
@@ -65,6 +64,17 @@ typedef struct so_long
 	int		en;
 	int		enemy_x;
 	int		enemy_y;
+	int		eny;
+	// void	*enemy_r;
+	void	*enemy_ar;
+	void	*enemy_br;
+	void	*enemy_cr;
+	void	*enemy_dr;
+	void	*enemy_er;
+	void	*enemy_fr;
+	void	*enemy_jr;
+	void	*enemy_hr;
+	void	*enemy_ir;
 }			t_map;
 
 typedef struct so_long_var
@@ -112,5 +122,8 @@ char	*ft_itoa(int n);
 int		ft_animation(t_map *map);
 int		on_click(int keycode, t_map *map);
 void	insert_image(t_map *map);
+void	ft_move(t_map *map, int pos_y, int pos_x);
+void	msg_end_game(char *str, int c);
+void	position_enemy(t_map *map);
 
 #endif
