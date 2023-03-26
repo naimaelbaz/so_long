@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:50:07 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/26 10:18:25 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:54:45 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct so_long
 	int		enemy_x;
 	int		enemy_y;
 	int		eny;
-	// void	*enemy_r;
 	void	*enemy_ar;
 	void	*enemy_br;
 	void	*enemy_cr;

@@ -6,13 +6,13 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:44:54 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/26 11:20:31 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:54:34 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int destroy_win(t_map *map)
+int	destroy_win(t_map *map)
 {
 	mlx_clear_window(map->mlx, map->win);
 	exit(0);

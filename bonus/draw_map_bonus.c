@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:50:40 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/25 12:55:36 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:53:45 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,28 @@ void	*xpm_to_img(t_map *map, char *tmp)
 	return (mlx);
 }
 
+void	ft_insert_enemy(t_map *map)
+{
+	map->enemy_ar = xpm_to_img(map, "./files/rev_1.xpm");
+	map->enemy_br = xpm_to_img(map, "./files/rev_2.xpm");
+	map->enemy_cr = xpm_to_img(map, "./files/rev_3.xpm");
+	map->enemy_dr = xpm_to_img(map, "./files/rev_4.xpm");
+	map->enemy_er = xpm_to_img(map, "./files/rev_5.xpm");
+	map->enemy_fr = xpm_to_img(map, "./files/rev_6.xpm");
+	map->enemy_jr = xpm_to_img(map, "./files/rev_7.xpm");
+	map->enemy_hr = xpm_to_img(map, "./files/rev_8.xpm");
+	map->enemy_ir = xpm_to_img(map, "./files/rev_9.xpm");
+	map->enemy_a = xpm_to_img(map, "./files/1.xpm");
+	map->enemy_b = xpm_to_img(map, "./files/2.xpm");
+	map->enemy_c = xpm_to_img(map, "./files/3.xpm");
+	map->enemy_d = xpm_to_img(map, "./files/4.xpm");
+	map->enemy_e = xpm_to_img(map, "./files/5.xpm");
+	map->enemy_f = xpm_to_img(map, "./files/6.xpm");
+	map->enemy_j = xpm_to_img(map, "./files/7.xpm");
+	map->enemy_h = xpm_to_img(map, "./files/8.xpm");
+	map->enemy_i = xpm_to_img(map, "./files/9.xpm");
+}
+
 void	insert_image(t_map *map)
 {
 	map->floor = xpm_to_img(map, "./files/floor.xpm");
@@ -76,29 +98,9 @@ void	insert_image(t_map *map)
 	map->player_d = xpm_to_img(map, "./files/player_D.xpm");
 	map->player_r = xpm_to_img(map, "./files/player_R.xpm");
 	map->player_u = xpm_to_img(map, "./files/player_U.xpm");
-	map->enemy_a = xpm_to_img(map, "./files/1.xpm");
-	map->enemy_b = xpm_to_img(map, "./files/2.xpm");
-	map->enemy_c = xpm_to_img(map, "./files/3.xpm");
-	map->enemy_d = xpm_to_img(map, "./files/4.xpm");
-	map->enemy_e = xpm_to_img(map, "./files/5.xpm");
-	map->enemy_f = xpm_to_img(map, "./files/6.xpm");
-	map->enemy_j = xpm_to_img(map, "./files/7.xpm");
-	map->enemy_h = xpm_to_img(map, "./files/8.xpm");
-	map->enemy_i = xpm_to_img(map, "./files/9.xpm");
-	/**********************************************/
-	map->enemy_ar = xpm_to_img(map, "./files/rev_1.xpm");
-	map->enemy_br = xpm_to_img(map, "./files/rev_2.xpm");
-	map->enemy_cr = xpm_to_img(map, "./files/rev_3.xpm");
-	map->enemy_dr = xpm_to_img(map, "./files/rev_4.xpm");
-	map->enemy_er = xpm_to_img(map, "./files/rev_5.xpm");
-	map->enemy_fr = xpm_to_img(map, "./files/rev_6.xpm");
-	map->enemy_jr = xpm_to_img(map, "./files/rev_7.xpm");
-	map->enemy_hr = xpm_to_img(map, "./files/rev_8.xpm");
-	map->enemy_ir = xpm_to_img(map, "./files/rev_9.xpm");
+	ft_insert_enemy(map);
 	map->fil = xpm_to_img(map, "./files/set.xpm");
 	map->enemy_p = map->enemy_a;
 	map->pl = map->player_d;
 	map->ex = map->exit_a;
-	// map->eny = map->enemy_a;
-	// map->enemy_r = map->enemy_ar;
 }

@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:10:26 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/26 10:48:55 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:50:27 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,65 +40,34 @@ void	draw_enemy(t_map *map, void *str)
 	get_position_enemy(map);
 }
 
+void	hilper(t_map *map, void *str, void *str1)
+{
+	if (map->eny == 0)
+		draw_enemy(map, str);
+	else
+		draw_enemy(map, str1);
+}
+
 int	ft_animation(t_map *map)
 {
 	static long	h;
+
 	if (h == 1000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_a);
-		else
-			draw_enemy(map, map->enemy_ar);
-	}
+		hilper(map, map->enemy_a, map->enemy_ar);
 	if (h == 2000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_b);
-		else
-			draw_enemy(map, map->enemy_br);
-	}
+		hilper(map, map->enemy_b, map->enemy_br);
 	if (h == 3000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_c);
-		else
-			draw_enemy(map, map->enemy_cr);
-	}
+		hilper(map, map->enemy_c, map->enemy_cr);
 	if (h == 4000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_d);
-		else
-			draw_enemy(map, map->enemy_dr);
-	}
+		hilper(map, map->enemy_d, map->enemy_dr);
 	if (h == 5000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_e);
-		else
-			draw_enemy(map, map->enemy_er);
-	}
+		hilper(map, map->enemy_e, map->enemy_er);
 	if (h == 6000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_f);
-		else
-			draw_enemy(map, map->enemy_fr);
-	}
+		hilper(map, map->enemy_f, map->enemy_fr);
 	if (h == 7000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_j);
-		else
-			draw_enemy(map, map->enemy_jr);
-	}
+		hilper(map, map->enemy_j, map->enemy_jr);
 	if (h == 8000)
-	{
-		if (map->eny == 0)
-			draw_enemy(map, map->enemy_h);
-		else
-			draw_enemy(map, map->enemy_hr);	
-	}
+		hilper(map, map->enemy_h, map->enemy_hr);
 	if (h == 8010)
 	{
 		position_enemy(map);

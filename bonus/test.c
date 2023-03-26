@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:41:11 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/26 11:09:23 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:38:32 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	position_enemy(t_map *map)
 			if (map->data[j][i] == 'N')
 			{
 				ft_move(map, j, i);
-				break;
+				break ;
 			}
 			i++;
 		}
@@ -57,9 +57,8 @@ void	ft_move(t_map *map, int pos_y, int pos_x)
 	{
 		if (map->data[pos_y][pos_x + 1] == 'P')
 			msg_end_game("\033[0;31m≈≈≈≈≈≈≈≈≈≈ YOU LOSE ≈≈≈≈≈≈≈≈≈≈", 1);
-		if (map->data[pos_y][pos_x + 1] == '1'
-		|| map->data[pos_y][pos_x + 1] == 'E'
-		|| map->data[pos_y][pos_x + 1] == 'C')
+		if (map->data[pos_y][pos_x + 1] != 'P'
+		&& map->data[pos_y][pos_x + 1] != '0')
 		{
 			map->eny = 1;
 		}
@@ -68,9 +67,8 @@ void	ft_move(t_map *map, int pos_y, int pos_x)
 	}
 	if (map->eny == 1)
 	{
-		if (map->data[pos_y][pos_x - 1] == '1'
-		|| map->data[pos_y][pos_x - 1] == 'E'
-		|| map->data[pos_y][pos_x - 1] == 'C')
+		if (map->data[pos_y][pos_x - 1] != 'P'
+		&& map->data[pos_y][pos_x - 1] != '0')
 		{
 			map->eny = 0;
 		}
