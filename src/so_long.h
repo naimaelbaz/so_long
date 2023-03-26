@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:50:07 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 13:25:28 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:23:11 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ void		move_right(t_map	*map);
 void		move_up(t_map	*map);
 void		move_down(t_map	*map);
 void		ft_draw(t_map *m);
+int			on_click(int keycode, t_map *map);
+void		insert_image(t_map *map);
 
 #endif

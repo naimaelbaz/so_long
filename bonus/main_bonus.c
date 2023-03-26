@@ -6,11 +6,18 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:44:54 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/25 14:06:53 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:20:31 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+int destroy_win(t_map *map)
+{
+	mlx_clear_window(map->mlx, map->win);
+	exit(0);
+	return (0);
+}
 
 void	ft_new_wind(t_map *map)
 {
@@ -22,6 +29,7 @@ void	ft_new_wind(t_map *map)
 	insert_image(map);
 	ft_draw(map);
 	mlx_hook(map->win, 2, 0, on_click, map);
+	mlx_hook(map->win, 17, 0, destroy_win, map);
 	mlx_loop_hook(map->mlx, ft_animation, map);
 	mlx_loop(map->mlx);
 }

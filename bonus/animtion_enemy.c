@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:10:26 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/25 21:54:00 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 10:48:55 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	get_position_enemy(t_map *m)
 		while (m->data[i][j])
 		{
 			if (m->data[i][j] == 'N')
+			{
 				mlx_put_image_to_window(m->mlx, m->win,
 					m->enemy_p, (j * 64), (i * 64));
+			}
 			j++;
 		}
 		i++;
@@ -41,7 +43,6 @@ void	draw_enemy(t_map *map, void *str)
 int	ft_animation(t_map *map)
 {
 	static long	h;
-
 	if (h == 1000)
 	{
 		if (map->eny == 0)

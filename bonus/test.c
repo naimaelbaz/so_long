@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 14:41:11 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/25 22:06:14 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:09:23 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ void	position_enemy(t_map *map)
 		{
 			if (map->data[j][i] == 'N')
 			{
-				printf("i == %d\n",i);
-				printf("j == %d\n",j);
 				ft_move(map, j, i);
+				break;
 			}
 			i++;
 		}
@@ -36,18 +35,18 @@ void	position_enemy(t_map *map)
 	}
 }
 
-void	move_enemy_left(t_map *map)
+void	move_enemy_left(t_map *map, int y, int x)
 {
-	map->data[map->enemy_y][map->enemy_x - 1] = 'N';
-	map->data[map->enemy_y][map->enemy_x] = '0';
+	map->data[y][x - 1] = 'N';
+	map->data[y][x] = '0';
 	mlx_clear_window(map->mlx, map->win);
 	ft_draw(map);
 }
 
-void	move_enemy_right(t_map *map)
+void	move_enemy_right(t_map *map, int y, int x)
 {
-	map->data[map->enemy_y][map->enemy_x + 1] = 'N';
-	map->data[map->enemy_y][map->enemy_x] = '0';
+	map->data[y][x + 1] = 'N';
+	map->data[y][x] = '0';
 	mlx_clear_window(map->mlx, map->win);
 	ft_draw(map);
 }
@@ -56,8 +55,8 @@ void	ft_move(t_map *map, int pos_y, int pos_x)
 {
 	if (map->eny == 0)
 	{
-		if (map->data[pos_y][pos_x] == 'P')
-			msg_end_game("you lose", 1);
+		if (map->data[pos_y][pos_x + 1] == 'P')
+			msg_end_game("\033[0;31m≈≈≈≈≈≈≈≈≈≈ YOU LOSE ≈≈≈≈≈≈≈≈≈≈", 1);
 		if (map->data[pos_y][pos_x + 1] == '1'
 		|| map->data[pos_y][pos_x + 1] == 'E'
 		|| map->data[pos_y][pos_x + 1] == 'C')
@@ -65,7 +64,7 @@ void	ft_move(t_map *map, int pos_y, int pos_x)
 			map->eny = 1;
 		}
 		if (map->data[pos_y][pos_x + 1] == '0')
-			move_enemy_right(map);
+			move_enemy_right(map, pos_y, pos_x);
 	}
 	if (map->eny == 1)
 	{
@@ -76,8 +75,8 @@ void	ft_move(t_map *map, int pos_y, int pos_x)
 			map->eny = 0;
 		}
 		if (map->data[pos_y][pos_x - 1] == '0')
-			move_enemy_left(map);
+			move_enemy_left(map, pos_y, pos_x);
 		if (map->data[pos_y][pos_x - 1] == 'P')
-			msg_end_game("you lose", 1);
+			msg_end_game("\033[0;31m≈≈≈≈≈≈≈≈≈≈ YOU LOSE ≈≈≈≈≈≈≈≈≈≈", 1);
 	}
 }

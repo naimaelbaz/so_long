@@ -6,11 +6,33 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:44:54 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 14:18:47 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:24:21 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int destroy_win(t_map *map)
+{
+	mlx_clear_window(map->mlx, map->win);
+	exit(0);
+	return (0);
+}
+
+void	ft_new_wind(t_map *map)
+{
+	map->mlx = mlx_init();
+	if (!map->mlx)
+		exit(1);
+	map->win = mlx_new_window(map->mlx, map->x * 64,
+			map->y * 64, "so_long");
+	insert_image(map);
+	ft_draw(map);
+	mlx_hook(map->win, 17, 0, destroy_win, map);
+	mlx_hook(map->win, 2, 0, on_click, map);
+	mlx_loop(map->mlx);
+}
+
 
 void	parssing(char **argv, t_map *map)
 {

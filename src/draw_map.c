@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 14:50:40 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 12:35:31 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 11:21:32 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,4 @@ void	insert_image(t_map *map)
 	map->player_u = xpm_to_img(map, "./files/player_U.xpm");
 	map->pl = map->player_d;
 	map->ex = map->exit_a;
-}
-
-void	ft_new_wind(t_map *map)
-{
-	map->mlx = mlx_init();
-	if (!map->mlx)
-		exit(1);
-	map->win = mlx_new_window(map->mlx, map->x * 64,
-			map->y * 64, "so_long");
-	insert_image(map);
-	ft_draw(map);
-	mlx_hook(map->win, 2, 0, on_click, map);
-	mlx_loop(map->mlx);
 }
