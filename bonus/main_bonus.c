@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:44:54 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/26 11:54:34 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 21:44:10 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_new_wind(t_map *map)
 		exit(1);
 	map->win = mlx_new_window(map->mlx, map->x * 64,
 			map->y * 64, "so_long");
+	if (!map->win)
+		exit(1);
 	insert_image(map);
 	ft_draw(map);
 	mlx_hook(map->win, 2, 0, on_click, map);

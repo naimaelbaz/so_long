@@ -6,7 +6,7 @@
 /*   By: nel-baz <nel-baz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 03:45:41 by nel-baz           #+#    #+#             */
-/*   Updated: 2023/03/21 10:31:23 by nel-baz          ###   ########.fr       */
+/*   Updated: 2023/03/26 17:12:48 by nel-baz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_alloc_map(char *file, t_map *map)
 
 	map->data = malloc(sizeof(char *) * (map->y + 1));
 	if (!map->data)
-		return ;
+		exit(1);
 	i = 0;
 	fd = open(file, O_RDONLY);
 	while (i < map->y)
